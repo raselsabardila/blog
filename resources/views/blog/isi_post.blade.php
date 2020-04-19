@@ -13,13 +13,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}   " />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{asset("css/font-awesome.min.css")}}">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="{{asset("css/style.css")}}" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -128,105 +128,34 @@
 
 	<!-- SECTION -->
 	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div id="hot-post" class="row hot-post">
-				<div class="col-md-8 hot-post-left">
-					<!-- post -->
-					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="./img/hot-post-1.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title title-lg"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
+        @foreach ($post as $gambar)
+        <div class="jumbotron" style="background-image:url( {{asset("uploads/post/$gambar->gambar")}} );background-repeat:no-repeat;background-position:center;background-size:cover;margin-top:-30px;height:480px;background-attachment:fixed">
+            <div class="container" style="margin-top:200px">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="post-category">
+							<a href="category.html">{{$gambar->category->name}}</a>
 						</div>
+						<h1 class="text-white" style="color:white;font-size:45px;text-transform:capitalize">{{$gambar->judul}}.</h1>
+						<ul class="post-meta">
+							<li><a href="author.html" style="color:white">{{$gambar->user->name}}</a></li>
+							<li style="color:white">{{$gambar->created_at}}</li>
+							<li style="color:white"><i class="fa fa-comments"></i> 3</li>
+							<li style="color:white"><i class="fa fa-eye"></i> 807</li>
+						</ul>
 					</div>
-					<!-- /post -->
-				</div>
-				<div class="col-md-4 hot-post-right">
-					<!-- post -->
-					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="./img/hot-post-2.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="./img/hot-post-3.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Fashion</a>
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
 				</div>
 			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /SECTION -->
-
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
+        </div>
+        @endforeach
+        <!-- container -->
 		<div class="container">
-			<!-- row -->
+            <!-- row -->
 			<div class="row">
-				<div class="col-md-8">
-					<!-- row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title">
-								<h2 class="title">Recent posts</h2>
-							</div>
-						</div>
-		
-						<!-- post -->
-						@foreach ($post as $item)
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="{{route("blog.show",$item->slug)}}"><img src="{{asset("uploads/post/$item->gambar")}}" alt=""></a>
-									<div class="post-body">
-										<div class="post-category">
-											<a href="category.html">{{$item->category->name}}</a>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">{{$item->judul}}</a></h3>
-										<ul class="post-meta">
-											<li><a href="author.html">{{$item->user->name}}</a></li>
-											<li>{{$item->created_at->diffForHumans()}}</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						@endforeach
-						<!-- /post -->
-					</div>
-					<!-- /row -->
-
+                <div class="col-md-8">
+                    @foreach ($post as $item)
+                        <p>{{$item->content}}</p>
+                    @endforeach
 				</div>
 				<div class="col-md-4">
 
@@ -451,10 +380,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- /FOOTER -->
 
 	<!-- jQuery Plugins -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="{{asset("js/jquery.min.js")}}"></script>
+	<script src="{{asset("js/bootstrap.min.js")}}"></script>
+	<script src="{{asset("js/jquery.stellar.min.js")}}"></script>
+	<script src="{{asset("js/main.js")}}"></script>
 
 </body>
 

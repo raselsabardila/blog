@@ -10,4 +10,9 @@ class BlogController extends Controller
         $post=\App\Post::latest()->get();
         return view("blog",compact("post"));
     }
+
+    public function show($slug){
+        $post=\App\Post::where("slug",$slug)->get();
+        return view("blog.isi_post",compact("post"));
+    }
 }

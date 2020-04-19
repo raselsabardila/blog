@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get("/","BlogController@index");
+Route::get("/isi/{slug}","BlogController@show")->name("blog.show");
 
 Route::get('/home',"HomeController@index")->name("home");
 
