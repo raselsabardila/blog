@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
             <label for="judul">Content : </label>
-            <textarea name="content" id="" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror"></textarea>
+            <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror"></textarea>
             @error('content')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -59,4 +59,9 @@
         <button type="submit" class="btn btn-primary btn-block">Tambah Data</button>
         </div>
     </form>
+
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'content' );
+    </script>
 @endsection

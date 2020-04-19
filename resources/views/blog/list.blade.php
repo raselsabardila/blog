@@ -6,17 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="ini adalah website yang dibuat oleh si rasel">
-
-	<meta property="og:title" content="">
-	<meta property="og:description" content="">
-	<meta property="og:image" content="">
-	<meta property="og:url" content="">
-
-	<meta name="twitter:title" content="">
-	<meta name="twitter:description" content="">
-	<meta name="twitter:image" content="">
-	<meta name="twitter:card" content="">
 
 	<title>Callie HTML Template</title>
 
@@ -24,7 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}   " />
 
 	<!-- Font Awesome Icon -->
 	<link rel="stylesheet" href="{{asset("css/font-awesome.min.css")}}">
@@ -105,7 +94,6 @@
 						
 						<li><a href="#">Technology</a></li>
 						<li><a href="{{route("blog.list")}}">List Postingan</a></li>
-						
 						<li><a href="#">Health</a></li>
 						<li><a href="#">Travel</a></li>
 					</ul>
@@ -141,105 +129,33 @@
 
 	<!-- SECTION -->
 	<div class="section">
-		<!-- container -->
+        
+        <!-- container -->
 		<div class="container">
-			<!-- row -->
-			<div id="hot-post" class="row hot-post">
-				<div class="col-md-8 hot-post-left">
-					<!-- post -->
-					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="./img/hot-post-1.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title title-lg"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-				<div class="col-md-4 hot-post-right">
-					<!-- post -->
-					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="./img/hot-post-2.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-
-					<!-- post -->
-					<div class="post post-thumb">
-						<a class="post-img" href="blog-post.html"><img src="./img/hot-post-3.jpg" alt=""></a>
-						<div class="post-body">
-							<div class="post-category">
-								<a href="category.html">Fashion</a>
-								<a href="category.html">Lifestyle</a>
-							</div>
-							<h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-							<ul class="post-meta">
-								<li><a href="author.html">John Doe</a></li>
-								<li>20 April 2018</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /post -->
-				</div>
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /SECTION -->
-
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
+            <!-- row -->
 			<div class="row">
-				<div class="col-md-8">
-					<!-- row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="section-title">
-								<h2 class="title">Recent posts</h2>
-							</div>
-						</div>
-		
+                <div class="col-md-8">
+                    <div class="row">
 						<!-- post -->
 						@foreach ($post as $item)
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="{{route("blog.show",$item->slug)}}"><img src="{{asset("uploads/post/$item->gambar")}}" height="250px" alt=""></a>
-									<div class="post-body">
-										<div class="post-category">
-											<a href="category.html">{{$item->category->name}}</a>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">{{$item->judul}}</a></h3>
-										<ul class="post-meta">
-											<li><a href="author.html">{{$item->user->name}}</a></li>
-											<li>{{$item->created_at->diffForHumans()}}</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						@endforeach
-						<!-- /post -->
-					</div>
-					<!-- /row -->
-
+                            <div class="post post-row">
+                                <a class="post-img" href="{{route("blog.show",$item->slug)}}"><img src="{{asset("uploads/post/$item->gambar")}}" height="180px" alt=""></a>
+                                <div class="post-body">
+                                    <div class="post-category">
+                                        <a href="category.html">{{$item->category->name}}</a>
+                                    </div>
+                                    <h3 class="post-title"><a href="{{route("blog.show",$item->slug)}}">{{$item->judul}}</a></h3>
+                                    <ul class="post-meta">
+                                        <li><a href="author.html">{{$item->user->name}}</a></li>
+                                        <li>{{$item->created_at}}</li>
+                                    </ul>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
+                                </div>
+                            </div>
+                        @endforeach
+                        <!-- /post -->
+                    </div>
+                    <center>{{$post->links()}}</center>
 				</div>
 				<div class="col-md-4">
 
@@ -393,7 +309,7 @@
 						<div class="category-widget">
 							<ul>
 								@foreach ($category as $item =>$hasil)
-									<li><a href="#">{{$hasil->name}}<span>{{$hasil->post->count()}}</span></a></li>
+									<li><a href="{{route("blog.listkategori",$hasil->id)}}">{{$hasil->name}}<span>{{$hasil->post->count()}}</span></a></li>
 								@endforeach
 							</ul>
 						</div>

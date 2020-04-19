@@ -17,6 +17,9 @@ Auth::routes();
 
 Route::get("/","BlogController@index");
 Route::get("/isi/{slug}","BlogController@show")->name("blog.show");
+Route::get("/list","BlogController@list")->name("blog.list");
+Route::get("/listkategori/{id}","BlogController@listkategori")->name("blog.listkategori");
+Route::get("/cari","BlogController@cari")->name("blog.cari");
 
 Route::get('/home',"HomeController@index")->name("home");
 

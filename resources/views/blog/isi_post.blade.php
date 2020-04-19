@@ -58,7 +58,7 @@
 						<button class="aside-btn"><i class="fa fa-bars"></i></button>
 						<button class="search-btn"><i class="fa fa-search"></i></button>
 						<div id="nav-search">
-							<form>
+							<form action="{{route("blog.cari")}}" method="GET">
 								<input class="input" name="search" placeholder="Enter your search...">
 							</form>
 							<button class="nav-close search-close">
@@ -93,6 +93,8 @@
 						</li>
 						
 						<li><a href="#">Technology</a></li>
+						<li><a href="{{route("blog.list")}}">List Postingan</a></li>
+						<li><a href="#">Health</a></li>
 						<li><a href="#">Health</a></li>
 						<li><a href="#">Travel</a></li>
 					</ul>
@@ -154,7 +156,7 @@
 			<div class="row">
                 <div class="col-md-8">
                     @foreach ($post as $item)
-                        <p>{{$item->content}}</p>
+                        <p>{!!$item->content!!}</p>
                     @endforeach
 				</div>
 				<div class="col-md-4">
@@ -196,11 +198,9 @@
 						</div>
 						<div class="category-widget">
 							<ul>
-								<li><a href="#">Lifestyle <span>451</span></a></li>
-								<li><a href="#">Fashion <span>230</span></a></li>
-								<li><a href="#">Technology <span>40</span></a></li>
-								<li><a href="#">Travel <span>38</span></a></li>
-								<li><a href="#">Health <span>24</span></a></li>
+								@foreach ($category as $item =>$hasil)
+									<li><a href="{{route("blog.listkategori",$hasil->id)}}">{{$hasil->name}}<span>{{$hasil->post->count()}}</span></a></li>
+								@endforeach
 							</ul>
 						</div>
 					</div>
@@ -310,11 +310,9 @@
 						<h3 class="footer-title">Categories</h3>
 						<div class="category-widget">
 							<ul>
-								<li><a href="#">Lifestyle <span>451</span></a></li>
-								<li><a href="#">Fashion <span>230</span></a></li>
-								<li><a href="#">Technology <span>40</span></a></li>
-								<li><a href="#">Travel <span>38</span></a></li>
-								<li><a href="#">Health <span>24</span></a></li>
+								@foreach ($category as $item =>$hasil)
+									<li><a href="{{route("blog.listkategori",$hasil->id)}}">{{$hasil->name}}<span>{{$hasil->post->count()}}</span></a></li>
+								@endforeach
 							</ul>
 						</div>
 					</div>
